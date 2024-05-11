@@ -1,0 +1,10 @@
+
+# Back-end Can use either openAI or Cohere, be sure to uncomment the code for each function and the imports.
+DJANGO
+assemblyai
+pytube
+#openai
+cohere
+
+#Front-End
+tailwindcss
