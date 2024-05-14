@@ -28,6 +28,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+# Append slashes:
+APPEND_SLASH = True
+
 # EMAILING SETTINGS
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('E_HOST')
