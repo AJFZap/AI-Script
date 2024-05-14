@@ -3,6 +3,7 @@
 Django==5.0.3
 assemblyai==0.26.0
 pytube==15.0.0
+python-decouple==3.8
 #openai==1.23.3
 cohere==5.4.0
 gunicorn==22.0.0
