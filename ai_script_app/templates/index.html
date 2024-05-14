@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>AI Scripts</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body class="flex flex-col min-h-screen bg-gray-300 font-sans antialised">
+    <!-- Navbar -->
+    <nav class="bg-purple-800 p-4 text-white flex justify-between">
+        <div>
+            <h1 class="text-3xl font-bold">AI Transcripts</h1>
+        </div>
+        <div class="flex justify- between">
+            {% if user.username %}
+            <a href="scripts" class="text-white hover:underline p-4">
+                Your Scripts
+            </a>
+            <a href="logout" class="text-white hover:underline p-4">
+                Logout
+            </a>
+            {% else %}
+            <a href="login" class="text-white hover:underline p-4">
+                Login
+            </a>
+            <a href="signup" class="text-white hover:underline p-4">
+                Signup
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <br></bodybr>
+
+    <!-- IN CASE THE USER HAS NOT BEEN VERIFIED OR IT HAS BEEN -->
+    {% for msg in messages %}
+    <div class="flex items-center justify-center">
+        {% if msg.tags == 'success' %}
+            <div class="flex-col container max-w-md mt-1 bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                <div class="flex">
+                <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                <div>
+                    <p class="font-bold">Verify your account</p>
+                    <p class="text-sm">{{msg}}</p>
+                </div>
+                </div>
+            </div>
+        {% elif msg.tags == 'error' %}
+            <div class="flex-col container max-w-md mt-1 px-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Something went wrong!</strong>
+                <span class="block sm:inline">{{msg}}</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <!-- Main -->
+    <div class="flex-grow container mx-auto mt-10 px-4 sm:px-0">
+        <div class="max-w-3xl mx-auto bg-white p-10 rounded-lg shadow-md transition-transform transform hover:scale-105 flex flex-col">
+            <div class="text-center">
+                {% if user.username %}
+                <h2 class="text-2xl font-semibold mb-4 py-2"> Welcome to the AI Transcript Generator, {{ user.username|title }}!</h2>
+                {% else %}
+                <h2 class="text-2xl font-semibold mb-4 py-2">
+                    Welcome to the AI Transcript Generator
+                </h2>
+                {% endif %}
+                <p class="text-gray-700">
+                    Paste a link from a video down below (Only youtube is supported as of now, more will be available soon!) and the AI will simply transcribe and summarize it!
+                </p>
+            </div>
+
+            <br>
+
+            <!-- Video Stream -->
+            <div class="text-center">
+                <h2 class="text-xl mb-4 font-semibold">
+                    Enter your link here!
+                </h2>
+                <div class="flex space-x-4">
+                    <input type="text" id="streamlink" type="url" placeholder="Paste your link in here, please" class="flex-grow p-2 border border-purple-300 rounded-md">
+                </div>
+                <button id="generatebutton" class="bg-purple-600 text-white px-4 py-2 rounded-md mt-5 hover:bg-purple-800 transition-colors">
+                    Generate Script!
+                </button>
+            </div>
+
+            <!-- Generated script section -->
+            <section class="mt-10 flex-grow" id="script-gen" style="display: none;">
+                <h2 class="text-xl mb-4 font-semibold">
+                    Script:
+                </h2>
+                <div id="script-content" class="mt-2 text-gray-700 space-y-4">
+
+                </div>
+                <hr class="my-4 border-purple-300">
+                <h2 class="text-xl mb-4 font-semibold">
+                    Summary:
+                </h2>
+                <div id="summary-content" class="mt-2 text-gray-700 space-y-4">
+
+                </div>
+            </section>
+            <!-- Loading Script -->
+            <div id="loading-ring" style="display: none;" class="load">
+
+            </div>
+        </div>
+    </div>
+    <br></bodybr>
+
+    <footer class="text-center bg-purple-800 p-4 text-white">
+        Powered by <a href="https://www.linkedin.com/in/ariel-zappia/" class="hover:underline">Ariel Zappia</a>
+    </footer>
+
+    <script src="{% static 'js/making-scripts.js' %}">
+
+    </script>
+
+</body>
+</html>
