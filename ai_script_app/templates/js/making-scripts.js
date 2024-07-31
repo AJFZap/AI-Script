@@ -7,8 +7,20 @@ const videoLink = document.getElementById('streamlink').value;
 const scriptContent = document.getElementById('script-content');
 const summaryContent = document.getElementById('summary-content')
 
+// Function to validate YouTube URLs
+function isValidYouTubeURL(url) {
+    const regex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/;
+    return regex.test(url);
+}
+
 if(videoLink) {
     document.getElementById('loading-ring').style.display = 'block';
+
+    // Validate YouTube link
+    if (!isValidYouTubeURL(videoLink)) {
+        alert("Please enter a valid YouTube link.");
+        return;
+    }
     
     // Clear previous content
     scriptContent.innerHTML = '';
