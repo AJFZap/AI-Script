@@ -2,7 +2,7 @@
 # Can use either openAI or Cohere, be sure to uncomment the code for each function and the imports.
 Django==5.0.3
 assemblyai==0.26.0
-pytube==15.0.0
+pytubefix==6.5.2
 python-decouple==3.8
 djangorestframework==3.15.1
 psycopg2==2.9.9

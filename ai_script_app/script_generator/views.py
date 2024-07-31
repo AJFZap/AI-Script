@@ -13,7 +13,7 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.core.mail import send_mail
 from django.urls import reverse
-from pytube import YouTube
+from pytubefix import YouTube
 from .models import ScriptsList, CustomUser
 from decouple import config
 import assemblyai as aai
