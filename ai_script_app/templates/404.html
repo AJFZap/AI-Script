@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,26 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Page Not Found</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}"> <!-- By icons8.com -->
 </head>
 <body class="flex flex-col min-h-screen bg-gray-300 font-sans antialised">
     <!-- Navbar -->
     <nav class="bg-purple-800 p-4 text-white flex justify-between">
         <div>
-            <a class="text-3xl font-bold" href="/">AI Transcripts</a>
+            <a class="text-3xl font-bold" href="{% url 'index' %}">AI Transcripts</a>
         </div>
         <div class="flex justify- between">
             {% if user.username %}
-            <a href="scripts" class="text-white hover:underline p-4">
+            <a href="{% url 'scripts' %}" class="text-white hover:underline p-4">
                 Your Scripts
             </a>
-            <a href="logout" class="text-white hover:underline p-4">
+            <a href="{% url 'logout' %}" class="text-white hover:underline p-4">
                 Logout
             </a>
             {% else %}
-            <a href="login" class="text-white hover:underline p-4">
+            <a href="{% url 'login' %}" class="text-white hover:underline p-4">
                 Login
             </a>
-            <a href="signup" class="text-white hover:underline p-4">
+            <a href="{% url 'signup' %}" class="text-white hover:underline p-4">
                 Signup
             </a>
             {% endif %}
@@ -46,7 +49,7 @@
                 <p class="text-lg text-gray-600 mb-8">The page you're looking for seems to have gone on a little adventure. Don't
                     worry, we'll help you find your way back home.</p>
                 
-                <a class="btn btn-primary bg-purple-600 text-white px-6 py-4 rounded-md mt-5 hover:bg-purple-800 transition-colors duration-300" href="/">Back to Home Page!</a>
+                <a class="btn btn-primary bg-purple-600 text-white px-6 py-4 rounded-md mt-5 hover:bg-purple-800 transition-colors duration-300" href="{% url 'index' %}">Back to Home Page!</a>
 
             </div>
         </div>

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Login</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}"> <!-- By icons8.com -->
 </head>
 <body class="flex flex-col min-h-screen bg-gray-300 font-sans antialised">
     <!-- Navbar -->
     <nav class="bg-purple-800 p-4 text-white flex justify-between">
         <div>
-            <a class="text-3xl font-bold" href="/">AI Transcripts</a>
+            <a class="text-3xl font-bold" href="{% url 'index' %}">AI Transcripts</a>
         </div>
         <div class="flex justify- between">
-            <a href="signup" class="text-white hover:underline p-4">
+            <a href="{% url 'signup' %}" class="text-white hover:underline p-4">
                 Signup
             </a>
         </div>
@@ -50,8 +53,8 @@
                     </p>
                     <button type="submit" class="w-full bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-800" id="login-button">Login</button>
                 </form>
-                <p class="text-gray-600">Don't have an account?</p> <a href="signup" class="underline hover:bg-purple-300">Sign up</a>
-                <p class="text-gray-600">Did you forget your password?</p> <a href="reset_password" class="underline hover:bg-purple-300">Change Password</a>
+                <p class="text-gray-600">Don't have an account?</p> <a href="{% url 'signup' %}" class="underline hover:bg-purple-300">Sign up</a>
+                <p class="text-gray-600">Did you forget your password?</p> <a href="{% url 'reset_password' %}" class="underline hover:bg-purple-300">Change Password</a>
             </div>
         </div>
         

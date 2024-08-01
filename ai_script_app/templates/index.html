@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>AI Scripts</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}"> <!-- By icons8.com -->
     <link href="{% static 'style.css' %}" rel="stylesheet">
 </head>
 <body class="flex flex-col min-h-screen bg-gray-300 font-sans antialised">
@@ -17,17 +18,17 @@
         </div>
         <div class="flex justify- between">
             {% if user.username %}
-            <a href="scripts" class="text-white hover:underline p-4">
+            <a href="{% url 'scripts' %}" class="text-white hover:underline p-4">
                 Your Scripts
             </a>
-            <a href="logout" class="text-white hover:underline p-4">
+            <a href="{% url 'logout' %}" class="text-white hover:underline p-4">
                 Logout
             </a>
             {% else %}
-            <a href="login" class="text-white hover:underline p-4">
+            <a href="{% url 'login' %}" class="text-white hover:underline p-4">
                 Login
             </a>
-            <a href="signup" class="text-white hover:underline p-4">
+            <a href="{% url 'signup' %}" class="text-white hover:underline p-4">
                 Signup
             </a>
             {% endif %}
