@@ -248,7 +248,6 @@ def get_transcript(link):
     else:
         return ("Not recognizable voices")
     
-@csrf_exempt
 def generate_script(request):
     if request.method == 'POST':
         try:
@@ -265,11 +264,9 @@ def generate_script(request):
         
         # Gets the video title if it has one.
         title = get_video_title(videoLink)
-        print(title)
 
         # Makes a transcription of the given video.
         transcription = get_transcript(videoLink)
-        print(transcription)
         if not transcription:
             return JsonResponse({'error': 'Invalid video file'}, status=500)
         
@@ -282,7 +279,6 @@ def generate_script(request):
 
         # Gives the transcription to cohere.
         cohere_content = cohere_summary(transcription)
-        print(cohere)
         if not cohere_content:
             return JsonResponse({'error': 'Failed to get the summary'}, status=500)
         

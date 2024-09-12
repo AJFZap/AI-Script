@@ -1,11 +1,25 @@
-
-CSRF_TOKEN = '{{ csrf_token }}'
-
 document.getElementById('generatebutton').addEventListener('click', async () => {
             
 const videoLink = document.getElementById('streamlink').value;
 const scriptContent = document.getElementById('script-content');
 const summaryContent = document.getElementById('summary-content')
+
+// Get cookie from django:
+function getCookie(name) {
+var cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // If the cookie string begins with the name we want.
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+        }
+    }
+}
+return cookieValue;
+}
 
 // Function to validate YouTube URLs
 function isValidYouTubeURL(url) {
@@ -27,15 +41,13 @@ if(videoLink) {
     summaryContent.innerHTML = '';
 
     const endpointUrl = '/generate';
-    console.log(videoLink)
-    console.log(JSON.stringify({ link: videoLink }))
     
     try {
         const response = await fetch(endpointUrl, {
             method: 'POST',
             headers: {
-                'X-CSRFToken': CSRF_TOKEN,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
             },
             body: JSON.stringify({ link: videoLink })
         });
