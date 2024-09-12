@@ -45,9 +45,9 @@ if(videoLink) {
     try {
         const response = await fetch(endpointUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+            headers: {                
                 'X-CSRFToken': getCookie('csrftoken'),
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ link: videoLink })
         });
