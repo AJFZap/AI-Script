@@ -27,6 +27,8 @@ if(videoLink) {
     summaryContent.innerHTML = '';
 
     const endpointUrl = '/generate';
+    console.log(videoLink)
+    console.log(JSON.stringify({ link: videoLink }))
     
     try {
         const response = await fetch(endpointUrl, {
