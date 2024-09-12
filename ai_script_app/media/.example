@@ -1,0 +1,3 @@
+"""
+Only purpose of this file is to add the media folder to the github so we can test if render is using the media folder or not anymore.
+"""
