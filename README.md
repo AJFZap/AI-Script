@@ -30,4 +30,4 @@ This is a Django-based web application that allows the user to get the full scri
 * **Deployment:** Render
 
 ## Webpage to check it out!
-[AI-Script](https://ai-script.onrender.com/)
+[AI-Script](https://maximum-lynx-non-profit-14b62243.koyeb.app/)
